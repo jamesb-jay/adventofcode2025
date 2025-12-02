@@ -42,6 +42,25 @@ def day1():
             zeros += 1
 
     return zeros
+
+def day1part2():
+    with open("day1.txt") as f:
+        rotations = parsePuzzleinput(f.readlines())
+    
+    dial = Dial()
+
+    zeros = 0
+    for r in rotations:
+
+        for _ in range(abs(r)):
+            c = 1 if r > 0 else -1
+
+            dial.turn(c)
+
+            if dial.position == 0:
+                zeros += 1
+
+    return zeros
     
 
 
@@ -53,4 +72,5 @@ def parsePuzzleinput(lines: list[str]) -> list[int]:
 
 
 if __name__ == "__main__":
-    print(f"Day 1 result: {day1()}")
+    print(f"Day 1 part 1 result: {day1()}")
+    print(f"Day 1 part 2 result: {day1part2()}")
